@@ -8,7 +8,9 @@ const IngredientList = (prop) => {
     <>
       <li style={{ backgroundColor: prop.color }}>
         {prop.name}
-        <button onClick={addIngredient}>+</button>
+        <button name={prop.name} onClick={addIngredient}>
+          +
+        </button>
       </li>
     </>
   );

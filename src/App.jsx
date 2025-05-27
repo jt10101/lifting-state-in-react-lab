@@ -22,9 +22,16 @@ const App = () => {
     { name: "Swiss Cheese", color: "#F1E1A8" },
   ];
 
-  const addIngredient = () => {
-    return console.log("???!");
+  const addIngredient = (event) => {
+    return console.log(
+      availableIngredients.filter(
+        (ingredient) => ingredient.name != event.target.name
+      )
+    );
+    // console.log(event);
   };
+
+  const removeIngredient = (event) => {};
 
   return (
     <main>
@@ -39,7 +46,9 @@ const App = () => {
             />
           ))}
         </ul>
-        <BurgerStack />
+        <ul>
+          <BurgerStack removeIngredient={removeIngredient} />
+        </ul>
       </section>
     </main>
   );
