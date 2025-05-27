@@ -23,22 +23,23 @@ const App = () => {
     { name: "Swiss Cheese", color: "#F1E1A8" },
   ];
 
-  const [ingredientList, setList] = useState(availableIngredients);
+  const [ingredient, setIngredient] = useState(availableIngredients);
   const [stack, setStack] = useState([]);
 
   const addIngredient = (event) => {
     let addedBurger = { name: "", color: "" };
     addedBurger.name = event.target.name;
     addedBurger.color = event.target.parentElement.style.backgroundColor;
-    let newstack = [...stack, addedBurger];
+
+    let newstack = [];
+    newstack = [...stack, addedBurger];
     setStack(newstack);
 
     let newList = [
-      ...availableIngredients.filter(
-        (ingredient) => ingredient.name != addedBurger.name
-      ),
+      ...ingredient.filter((ingredient) => ingredient.name != addedBurger.name),
     ];
-    setList(newList);
+    setIngredient(newList);
+    console.log(ingredient);
   };
 
   const removeIngredient = (event) => {
@@ -50,8 +51,8 @@ const App = () => {
     ];
     setStack(newstack);
 
-    let newList = [...availableIngredients, removedBurger];
-    setList(newList);
+    let newList = [...ingredient, removedBurger];
+    setIngredient(newList);
   };
 
   return (
@@ -59,7 +60,7 @@ const App = () => {
       <h1>Burger Stacker</h1>
       <section>
         <ul>
-          {ingredientList.map((ingredient) => (
+          {ingredient.map((ingredient) => (
             <IngredientList
               key={ingredient.name}
               name={ingredient.name}
