@@ -27,24 +27,32 @@ const App = () => {
   const [stack, setStack] = useState([]);
 
   const addIngredient = (event) => {
-    console.log(event);
-    let newList = [
-      ...availableIngredients.filter(
-        (ingredient) => ingredient.name != event.target.name
-      ),
-    ];
-
-    setList(newList);
-
     let addedBurger = { name: "", color: "" };
     addedBurger.name = event.target.name;
     addedBurger.color = event.target.parentElement.style.backgroundColor;
     let newstack = [...stack, addedBurger];
     setStack(newstack);
-    console.log(addedBurger);
+
+    let newList = [
+      ...availableIngredients.filter(
+        (ingredient) => ingredient.name != addedBurger.name
+      ),
+    ];
+    setList(newList);
   };
 
-  const removeIngredient = (event) => {};
+  const removeIngredient = (event) => {
+    let removedBurger = { name: "", color: "" };
+    removedBurger.name = event.target.name;
+    removedBurger.color = event.target.parentElement.style.backgroundColor;
+    let newstack = [
+      ...stack.filter((ingredient) => ingredient.name != removedBurger.name),
+    ];
+    setStack(newstack);
+
+    let newList = [...availableIngredients, removedBurger];
+    setList(newList);
+  };
 
   return (
     <main>
@@ -66,7 +74,7 @@ const App = () => {
               key={stack.name}
               name={stack.name}
               color={stack.color}
-              // addIngredient={addIngredient}
+              removeIngredient={removeIngredient}
             />
           ))}
         </ul>

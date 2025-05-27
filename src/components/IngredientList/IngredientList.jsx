@@ -3,8 +3,7 @@ import { useState } from "react";
 
 const IngredientList = (prop) => {
   const addIngredient = prop.addIngredient;
-  //   const [ingredientList, setIngredientList] = useState(prop);
-  //   setIngredientList(addIngredient);
+
   return (
     <>
       <li style={{ backgroundColor: prop.color }}>
