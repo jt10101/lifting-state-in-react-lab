@@ -2,6 +2,7 @@
 
 import "./App.css";
 import IngredientList from "./components/IngredientList/IngredientList";
+import BurgerStack from "./components/BurgerStack/BurgerStack";
 
 const App = () => {
   const availableIngredients = [
@@ -21,16 +22,24 @@ const App = () => {
     { name: "Swiss Cheese", color: "#F1E1A8" },
   ];
 
+  const addIngredient = () => {
+    return console.log("???!");
+  };
+
   return (
     <main>
       <h1>Burger Stacker</h1>
       <section>
         <ul>
           {availableIngredients.map((ingredient) => (
-            <IngredientList name={ingredient.name} color={ingredient.color} />
+            <IngredientList
+              name={ingredient.name}
+              color={ingredient.color}
+              addIngredient={addIngredient}
+            />
           ))}
         </ul>
-        {/* <BurgerStack /> */}
+        <BurgerStack />
       </section>
     </main>
   );

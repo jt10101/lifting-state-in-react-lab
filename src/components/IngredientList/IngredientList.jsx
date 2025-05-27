@@ -1,11 +1,14 @@
 // src/components/IngredientList/IngredientList.jsx
+import { useState } from "react";
 
 const IngredientList = (prop) => {
+  const addIngredient = prop.addIngredient;
+
   return (
     <>
       <li style={{ backgroundColor: prop.color }}>
         {prop.name}
-        <button>+</button>
+        <button onClick={addIngredient}>+</button>
       </li>
     </>
   );
