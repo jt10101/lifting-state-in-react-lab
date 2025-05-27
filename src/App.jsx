@@ -3,6 +3,7 @@
 import "./App.css";
 import IngredientList from "./components/IngredientList/IngredientList";
 import BurgerStack from "./components/BurgerStack/BurgerStack";
+import { useState } from "react";
 
 const App = () => {
   const availableIngredients = [
@@ -22,13 +23,17 @@ const App = () => {
     { name: "Swiss Cheese", color: "#F1E1A8" },
   ];
 
+  const [stack, setStack] = useState([]);
   const addIngredient = (event) => {
-    return console.log(
-      availableIngredients.filter(
-        (ingredient) => ingredient.name != event.target.name
-      )
+    availableIngredients.filter(
+      (ingredient) => ingredient.name != event.target.name
     );
-    // console.log(event);
+    let addedBurger = { name: "", color: "" };
+    addedBurger.name = event.target.name;
+
+    let newstack = [...stack, addedBurger];
+    setStack(newstack);
+    // console.log(addedBurger);
   };
 
   const removeIngredient = (event) => {};
@@ -40,6 +45,7 @@ const App = () => {
         <ul>
           {availableIngredients.map((ingredient) => (
             <IngredientList
+              key={ingredient.name}
               name={ingredient.name}
               color={ingredient.color}
               addIngredient={addIngredient}
@@ -47,11 +53,17 @@ const App = () => {
           ))}
         </ul>
         <ul>
-          <BurgerStack removeIngredient={removeIngredient} />
+          {stack.map((stack) => (
+            <IngredientList
+              key={stack.name}
+              name={stack.name}
+              // color={ingredient.color}
+              // addIngredient={addIngredient}
+            />
+          ))}
         </ul>
       </section>
     </main>
   );
 };
-
 export default App;
