@@ -1,14 +1,14 @@
 // src/components/BurgerStack/BurgerStack.jsx
-import { useState } from "react";
+
 const BurgerStack = (prop) => {
-  const removeIngredient = prop.removeIngredient;
-  const [burgerStack, setBurgerStack] = useState({});
+  // const removeIngredient = prop.removeIngredient;
+
   return (
     <>
-      {/* <li style={{ backgroundColor: prop.color }}>
+      <li style={{ backgroundColor: prop.color }}>
         {prop.name}
-        <button onClick={addIngredient}>+</button>
-      </li> */}
+        <button name={prop.name}>+</button>
+      </li>
     </>
   );
 };
