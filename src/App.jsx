@@ -1,6 +1,7 @@
 // src/App.jsx
 
 import "./App.css";
+import IngredientList from "./components/IngredientList/IngredientList";
 
 const App = () => {
   const availableIngredients = [
@@ -23,7 +24,14 @@ const App = () => {
   return (
     <main>
       <h1>Burger Stacker</h1>
-      <section>{/* List & Stack components */}</section>
+      <section>
+        <ul>
+          {availableIngredients.map((ingredient) => (
+            <IngredientList name={ingredient.name} color={ingredient.color} />
+          ))}
+        </ul>
+        {/* <BurgerStack /> */}
+      </section>
     </main>
   );
 };
